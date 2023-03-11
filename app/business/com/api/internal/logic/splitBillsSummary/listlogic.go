@@ -2,9 +2,10 @@ package splitBillsSummary
 
 import (
 	"context"
-
+	"github.com/jinzhu/copier"
 	"upi/app/business/com/api/internal/svc"
 	"upi/app/business/com/api/internal/types"
+	"upi/app/business/com/rpc/splitbillssummary"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -24,7 +25,30 @@ func NewListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *ListLogic {
 }
 
 func (l *ListLogic) List(req *types.SplitBillsSummaryListReq) (resp *types.SplitBillsSummaryListResp, err error) {
-	// todo: add your logic here and delete this line
 
-	return
+	//subAcctNos := ctxdata.GetUidFromSubAcctNoCtx(l.ctx)
+	respData, err := l.svcCtx.SplitBillsSummaryRpc.List(l.ctx, &splitbillssummary.SplitBillsSummaryListReq{
+
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	//
+	// 格式转换
+	//
+	var respMap []types.SplitBillsSummaryListmap
+
+	if len(respData.List) > 0 {
+		for r := range respData.List {
+			var b types.SplitBillsSummaryListmap
+			_ = copier.Copy(r, b)
+
+			respMap = append(respMap, b)
+		}
+	}
+
+	return &types.SplitBillsSummaryListResp{
+		List: respMap,
+	}, nil
 }

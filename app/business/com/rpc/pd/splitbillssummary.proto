@@ -37,6 +37,7 @@ message SplitBillsSummaryListReq {
   string buyerCompanyName = 3;
   string theMonthStart = 4;
   string theMonthEnd = 5;
+  string userId = 6;
 }
 
 service SplitBillsSummary {
