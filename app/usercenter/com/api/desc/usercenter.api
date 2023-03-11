@@ -1,0 +1,53 @@
+syntax = "v1"
+
+info(
+    title: "用户中心服务"
+    desc: "用户中心服务"
+    author: "Shinnosuke"
+    email: ""
+    version: "v"
+)
+
+import (
+    "user/user.api"
+)
+
+// =========================== usercenter api ========================== //
+// no need login
+@server (
+    prefix : usercenter/v1
+    group : user
+)
+
+service usercenter {
+    // 登录
+    @doc "login"
+    @handler login
+    post /user/login (LoginReq) returns (LoginResp)
+
+    @doc "user-info"
+    @handler userinfo
+    get /user/info () returns (UserInfoResp)
+}
+
+
+
+
+
+
+type request {
+    // TODO: add members here and delete this comment
+}
+
+type response {
+    // TODO: add members here and delete this comment
+}
+
+@server(
+    jwt: Auth
+    group: template
+)
+service template {
+    @handler handlerName // TODO: replace handler name and delete this comment
+    get /users/id/:userId (request) returns (response)
+}

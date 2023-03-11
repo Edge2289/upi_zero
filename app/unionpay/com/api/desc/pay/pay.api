@@ -1,0 +1,72 @@
+syntax = "v1"
+
+info(
+    title: "支付实例"
+    desc: "支付实例"
+    author: "Shinnosuke"
+    email: ""
+)
+
+// === 请求支付 === //
+type (
+    PayReq {
+        tradeNo string `form:"tradeNo" validate:"required,max=28"`
+        amount string `form:"amount" validate:"required,max=123"`
+        payMode string `form:"payMode" validate:"required,max=30"`
+        callbackUrl string `form:"callbackUrl,optional" validate:"max=128"`
+        authAppId string `form:"authAppId,optional" validate:"max=32"`
+        openId string `form:"openId,optional" validate:"max=32"`
+        memo string `form:"memo,optional" validate:"max=30"`
+        terminalDevice string `form:"terminalDevice,optional" validate:"max=2"`
+        isRaw string `form:"isRaw,optional" validate:"max=1"`
+        limitCreditPay string `form:"limitCreditPay,optional" validate:"max=10"`
+        hbFqNum string `form:"hbFqNum,optional" validate:"max=10"`
+        bankId string `form:"bankId,optional" validate:"max=12"`
+        expireDate string `form:"expireDate,optional" validate:"max=14"`
+        timeExpire string `form:"timeExpire,optional" validate:"max=10"`
+        terminalIp string `form:"terminalIp,optional" validate:"max=32"`
+        authCode string `form:"authCode,optional" validate:"max=32"`
+    }
+
+    PayResp {
+        data interface{} `json:"data"`
+    }
+)
+
+// === 查询订单状态 === //
+type (
+    QueryReq {
+        tradeNo string `form:"tradeNo"`
+    }
+
+    QueryResp {
+        amount string `json:"amount"`
+        app_id string `json:"app_id"`
+        result string `json:"result"`
+        trade_date string `json:"trade_date"`
+        trans_id string `json:"trans_id"`
+    }
+)
+
+// === 获取支付方式 === //
+type (
+    ModesResp {
+        Modes interface{} `json:"modes"`
+    }
+)
+
+// === 取消支付 === //
+type (
+    CancelReq {
+        tradeNo string `form:"tradeNo"`
+        cancelNo string `form:"cancelNo"`
+        remark string `form:"remark"`
+    }
+
+    CancelResp {
+        app_id string `json:"appId"`
+        result string `json:"result"`
+        trans_id string `json:"trans_id"`
+    }
+)
+

@@ -1,0 +1,48 @@
+syntax = "v1"
+
+info(
+    title: "type title here"
+    desc: "type desc here"
+    author: "type author here"
+    email: "type email here"
+    version: "type version here"
+)
+
+// 子账户列表返回数据
+type (
+    AccountListReq {
+        Page        int     `form:"page"`
+        PerPage     int     `form:"per_page"`
+        SubAcctNo   string  `form:"sub_acct_no"`
+        MemberName  string  `form:"member_name"`
+        StartTime   string  `form:"start_time"`
+        EndTime     string  `form:"end_time"`
+    }
+
+    AccountListResps {
+        Data []AccountListResp `json:"data"`
+    }
+
+    AccountListResp {
+        ID                 int    `json:"id"`
+        SubAcctNo          int64  `json:"sub_acct_no"`
+        TranNetMemberCode  string `json:"tran_net_member_code"`
+        MemberName         string `json:"member_name"`
+        MemberGlobalType   string `json:"member_global_type"`
+        MemberGlobalID     string `json:"member_global_id"`
+        UserNickname       string `json:"user_nickname"`
+        Mobile             string `json:"mobile"`
+        MemberProperty     string `json:"member_property"`
+        ReservedMsg        string `json:"reserved_msg"`
+        Status             uint8  `json:"status"`
+        PassTime           int64 `json:"pass_time"`
+        Type               uint8 `json:"type"`
+        EiconBankBranchID  string `json:"eicon_bank_branch_id"`
+        MemberAcctNo       int64 `json:"member_acct_no"`
+        CnapsBranchID      string `json:"cnaps_branch_id"`
+        AcctOpenBranchName string `json:"acct_open_branch_name"`
+        BankType           uint8 `json:"bank_type"`
+        CreatedAt          string `json:"created_at"`
+        UpdatedAt          string `json:"updated_at"`
+    }
+)

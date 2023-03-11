@@ -1,0 +1,13 @@
+syntax = "v1"
+
+info(
+	title: "基础业务服务"
+	desc: "基础业务服务"
+	author: "Shinnosuke"
+	email: ""
+	version: "V1"
+)
+
+import(
+	"capitalManager/capitalManager.api"
+)

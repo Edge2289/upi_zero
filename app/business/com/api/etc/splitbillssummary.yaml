@@ -1,0 +1,19 @@
+Name: splitBillsSummary
+Host: 0.0.0.0
+Port: 8842
+Mode: dev
+
+Log:
+  ServiceName: splitBillsSummary-api
+  Level: info
+
+#jwtAuth
+JwtAuth:
+  AccessSecret: ae0536f9-6450-4606-8e13-5a19ed505da0
+
+# 基础业务rpc配置
+SplitBillsSummaryRpcConfig:
+  Etcd:
+    Hosts:
+      - 0.0.0.0:20000
+    Key: splitbillssummary.rpc

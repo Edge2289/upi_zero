@@ -1,0 +1,18 @@
+Name: account
+Host: 0.0.0.0
+Port: 8822
+Mode: dev
+
+# jwtAuth
+JwtAuth:
+  AccessSecret: ae0236f9-6451-4656-8e23-6v19es709sa0
+
+Log:
+  ServiceName: account-api
+  Level: error
+
+# rpc
+AccountRpcConfig:
+  Endpoints:
+    - 127.0.0.1:2001
+  NonBlock: true

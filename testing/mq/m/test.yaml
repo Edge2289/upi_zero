@@ -1,0 +1,3 @@
+Brokers:
+  - kafka:9092
+Topic: payment-update-paystatus-topic

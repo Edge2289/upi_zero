@@ -1,0 +1,28 @@
+syntax = "v1"
+
+info(
+	title: "子账户服务"
+	desc: "子账户服务"
+	author: "Shinnosuke"
+	email: "1131191695@qq.com"
+	version: "v1"
+)
+
+import (
+	"account/account.api"
+	//	"account/withdraw.api"
+	//	"account/bill.api"
+)
+
+// =============== account v1 ==================
+// need login
+@server (
+	prefix : account/v1
+	group : spaAccount
+	jwt : JwtAuth
+)
+service account {
+	@doc "子账户列表"
+	@handler accountList
+	get /spaAccount/accountList (AccountListReq) returns (AccountListResp)
+}

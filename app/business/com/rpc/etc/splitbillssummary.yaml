@@ -1,0 +1,28 @@
+Name: splitbillssummary.rpc
+ListenOn: 0.0.0.0:8080
+
+Etcd:
+  Hosts:
+  - 127.0.0.1:20000
+  Key: splitbillssummary.rpc
+
+Log:
+  ServiceName: splitbillssummary-rpc
+  Level: error
+
+
+# rpc 示例
+#UnionPayRpcConfig:
+#  Etcd:
+#    Hosts:
+#      - 0.0.0.0:20000
+#    Key: unionpay.rpc
+
+RedisConf:
+  Host: 127.0.0.1:6379
+  Pass:
+  Type: node
+
+Cache:
+  - Host: upi-redis:36379
+    Pass: G62m50oigInC30sf  

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package pb;
+
+message SavePayOrderReq {
+  string trade_no = 1;
+  string oa_order_amount = 2;
+  string mall_order_code = 3;
+  string mall_amount = 4;
+  string mall_type = 5;
+}
+
+message SavePayOrderResp {
+  int64 id = 1;
+}
+
+// 保存支付内容
+service unionpay {
+  rpc savePayOrder(SavePayOrderReq) returns(SavePayOrderResp);
+}

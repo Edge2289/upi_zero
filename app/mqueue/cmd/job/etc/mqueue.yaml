@@ -1,0 +1,13 @@
+Name: mqueue-job
+Host: 0.0.0.0
+Port: 3002
+Mode: dev
+
+Log:
+  ServiceName: mqueue-job
+  Level: error
+
+Redis:
+  Host: 127.0.0.1:6379
+  Pass:
+  Type: node

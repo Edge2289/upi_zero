@@ -1,0 +1,24 @@
+Name: account.rpc
+ListenOn: 0.0.0.0:2001
+
+Log:
+  ServiceName: account-rpc
+  Level: error
+  Mode: file
+
+Etcd:
+  Hosts:
+  - 0.0.0.0:20000
+  Key: account.rpc
+
+Redis:
+  Host: upi-redis:36379
+  Type: node
+  Pass: G62m50oigInC30sf
+
+DB:
+  DataSource: UPITestUser:KWvLoRrXZKAzUze6TAmAL8kVhx0wGX@tcp(106.55.47.143:3306)/upi?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+
+Cache:
+  - Host: upi-redis:36379
+    Pass: G62m50oigInC30sf

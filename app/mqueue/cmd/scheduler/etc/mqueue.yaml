@@ -1,0 +1,13 @@
+Name: mqueue-scheduler
+Host: 0.0.0.0
+Port: 3003
+Mode: dev
+
+Log:
+  ServiceName: mqueue-scheduler
+  Level: error
+
+Redis:
+  Host: 127.0.0.1:6379
+  Pass:
+  Type: node

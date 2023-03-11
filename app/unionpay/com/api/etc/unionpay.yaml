@@ -1,0 +1,54 @@
+Name: unionpay
+Host: 0.0.0.0
+Port: 8832
+Mode: dev
+
+Log:
+  ServiceName: unionpay-api
+  Level: info
+
+#jwtAuth
+JwtAuth:
+  AccessSecret: ae0536f9-6450-4606-8e13-5a19ed505da0
+
+# rpc
+UnionPayRpcConfig:
+  Etcd:
+    Hosts:
+      - 0.0.0.0:20000
+    Key: unionpay.rpc
+
+RedisConf:
+  Host: 127.0.0.1:6379
+  Pass:
+  Type: node
+
+# unionPay
+UnionPayConfig:
+  Host: http://120.79.15.51:8680/mapi
+  Account: 9262001169
+  SysCode: 20000254
+  PrivateKey: |-
+    -----BEGIN RSA PRIVATE KEY-----
+    MIICXAIBAAKBgQC3SYirUDkCOXfymgWF6jXzBzjFbGFAE3uINs2guvWUS7tYD/8h
+    2WeUq6ejDQ/xcTYi3Y4tNatmfdVThkA6rZ+G6sXS97fyllBZIEGC2K9na6Zl+4yO
+    7j7QrP6W32xZr+Z1frCKp4csEHFEc58oBPG/Dsds4ApR7kF38DeG9H3uXwIDAQAB
+    AoGAExLP6iP7CsQ4O0LT+E+bNaM2wTS6GhTs8gvh8iwCimAnKs7fWgJpyQrj8w/U
+    7Oc/Hvm3ZfUD1TKbFIoP/Qs8Yny9MCV9s1NpFjhLVQfQCjMzCGfq1xbEJf5xNCPw
+    HJsWd2UyC+rp3bxobVgHNjznifTusOOPpMq8wMcRcw+3gsECQQDk04l7p/4S4M7+
+    o0xG7Fmf86FxIV0B0RXKKVF17HQKYmloOPfIjmLBAnb227/ljOfJ1kih5IRsTT+x
+    DJzC/5gJAkEAzQ2Um4YXAWSq9irZz5UIkbIIJWX6KKqCyLzZttDOQPPQMSOZl29g
+    uQ4K4Vc3UhOngUbOkxxUjNtQRuREFl7dJwJAa1vEOTwMPJc1Bste0je5pQ4NRKK+
+    nEeYzYytJ4KUvvqFMdzohDQpqRya7B8V3YFKjqv2z94DMzzbERo1wldg4QJAcm+0
+    0wMHjch/vPh3LGlRKfaAo1aBQPbAHIWAv41Svl8TfokOq7wF7+ENY2tIPW8omXZJ
+    zUIPUbkH2TiFYzK4GwJBAIqSz77Jh8pdIH2vfjNBgYMFM6h7HSgHUOqKnxuvWZGm
+    CxwWKkcUU6vTu6jwwYRXutKHrDqNZs0hMseOWTDd8qs=
+    -----END RSA PRIVATE KEY-----
+
+  PublicKey: |-
+    -----BEGIN PUBLIC KEY-----
+    MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC3SYirUDkCOXfymgWF6jXzBzjF
+    bGFAE3uINs2guvWUS7tYD/8h2WeUq6ejDQ/xcTYi3Y4tNatmfdVThkA6rZ+G6sXS
+    97fyllBZIEGC2K9na6Zl+4yO7j7QrP6W32xZr+Z1frCKp4csEHFEc58oBPG/Dsds
+    4ApR7kF38DeG9H3uXwIDAQAB
+    -----END PUBLIC KEY-----

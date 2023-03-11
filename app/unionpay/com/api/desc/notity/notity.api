@@ -1,0 +1,25 @@
+syntax = "v1"
+
+info(
+    title: "回调实例"
+    desc: "回调实例"
+    author: "Shinnosuke"
+    email: ""
+)
+
+// === 支付回调请求 === //
+type (
+    NotifyTradeReq {
+        Account string `json:"account"`
+        Amount string `json:"amount"`
+        AppID string `json:"app_id"`
+        Fee string `json:"fee"`
+        PayMode string `json:"pay_mode"`
+        Rate string `json:"rate"`
+        Result string `json:"result"`
+        SettleAmount string `json:"settle_amount"`
+        Sign string `json:"sign"`
+        SuccTime string `json:"succ_time"`
+        TransID string `json:"trans_id"`
+    }
+)

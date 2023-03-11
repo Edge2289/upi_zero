@@ -1,0 +1,54 @@
+syntax = "v1"
+
+info(
+	title: "支付服务"
+	desc: "支付服务"
+	author: "Shinnosuke"
+	email: ""
+	version: "V1"
+)
+
+import(
+	"pay/pay.api"
+	"notity/notity.api"
+)
+
+// ===== 支付以及请求退款 ===== //
+@server(
+	prefix: unionpay/v1
+	group: trade
+	jwt: JwtAuth
+	//	middleware : VerifySign
+)
+
+service unionpay {
+	
+	@doc "支付请求"
+	@handler pay
+	post /trade/pay (PayReq) returns (PayResp)
+	
+	@doc "支付查询"
+	@handler query
+	get /trade/query (QueryReq) returns (QueryResp)
+	
+	@doc "支付方式"
+	@handler modes
+	get /trade/modes returns (ModesResp)
+	
+	@doc "取消订单"
+	@handler cancel
+	get /trade/cancel (CancelReq) returns (CancelResp)
+}
+
+// ===== 回调请求 ===== //
+@server(
+	prefix: unionpay/v1
+	group: notify
+)
+
+service unionpay {
+	
+	@doc "支付回调"
+	@handler tradeNotify
+	get /notify/trade (NotifyTradeReq)
+}

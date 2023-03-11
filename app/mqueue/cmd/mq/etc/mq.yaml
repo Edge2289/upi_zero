@@ -1,0 +1,30 @@
+Name: order-mq
+Host: 0.0.0.0
+Port: 3001
+Mode: dev
+
+Log:
+  ServiceName: order-mq
+  Level: error
+
+Redis:
+  Host: 127.0.0.1:6379
+  Type: node
+  Pass:
+
+#kq
+PaymentUpdateStateConf:
+  Name: PaymentUpdateStatus
+  Brokers:
+    - kafka:9092
+  Group: payment-update-paystatus-group
+  Topic: payment-update-paystatus-topic
+  Offset: first
+  Consumers: 1
+  Processors: 1
+
+UnionPayRpcConfig:
+  Etcd:
+    Hosts:
+      - 0.0.0.0:20000
+    Key: unionpay.rpc

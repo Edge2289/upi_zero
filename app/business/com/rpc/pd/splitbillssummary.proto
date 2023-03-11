@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+option go_package = "./pd";
+
+package pd;
+
+message StreamReq {
+  string name = 1;
+}
+
+message SplitBillsSummaryListResp {
+  repeated SplitBillsSummaryListMap List = 1;
+}
+
+message SplitBillsSummaryListMap {
+  double sbs_id = 1;
+  string the_month = 2;
+  double buyer_sub_acct_no = 3;
+  double saler_sub_acct_no = 4;
+  string the_type = 5;
+  string settle_in = 6;
+  string into_amount = 7;
+  string surplus_amount = 8;
+  string offline_amount = 9;
+  double the_change_amount = 10;
+  string invoice_type = 11;
+  double serial_number = 12;
+  string created_at = 13;
+  string updated_at = 14;
+  string buyer_company_name = 15;
+  string saler_company_name = 16;
+}
+
+message SplitBillsSummaryListReq {
+  string page = 1;
+  string per_page = 2;
+  string buyerCompanyName = 3;
+  string theMonthStart = 4;
+  string theMonthEnd = 5;
+}
+
+service SplitBillsSummary {
+  rpc List(SplitBillsSummaryListReq) returns (SplitBillsSummaryListResp);
+}

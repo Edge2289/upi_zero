@@ -1,0 +1,29 @@
+Name: unionpay.rpc
+ListenOn: 0.0.0.0:3001
+
+Log:
+  ServiceName: unionpay-rpc
+  Level: error
+
+Etcd:
+  Hosts:
+    - 0.0.0.0:20000
+  Key: unionpay.rpc
+
+Redis:
+  Host: upi-redis:36379
+  Type: node
+  Pass: G62m50oigInC30sf
+
+DB:
+  DataSource: UPITestUser:KWvLoRrXZKAzUze6TAmAL8kVhx0wGX@tcp(106.55.47.143:3306)/upi?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
+
+Cache:
+  - Host: upi-redis:36379
+    Pass: G62m50oigInC30sf
+
+
+KqueuePayConf:
+  Brokers:
+    - kafka:9092
+  Topic: payment-update-paystatus-topic

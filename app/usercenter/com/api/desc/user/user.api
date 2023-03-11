@@ -1,0 +1,38 @@
+syntax = "v1"
+
+info(
+    title: "用户实例"
+    desc: "用户实例"
+    author: "Shinnosuke"
+    email: ""
+)
+
+type (
+    LoginReq {
+        Name   string `json:"name"`
+        Type   int16 `json:"type"`
+        Password string `json:"password"`
+    }
+
+    LoginResp {
+        Resources interface{} `json:"resources"`
+        AccessToken  string `json:"accessToken"`
+        AccessExpire int64  `json:"accessExpire"`
+        RefreshAfter int64  `json:"refreshAfter"`
+    }
+
+    UserInfoResp {
+        UserInfo User  `json:"userInfo"`
+    }
+
+    User {
+        Id int64   `json:"id"`
+        Name string `json:"name"`
+        Roles []Role   `json:"roles"`
+    }
+
+    Role {
+        Id int64   `json:"id"`
+        Name string `json:"name"`
+    }
+)
