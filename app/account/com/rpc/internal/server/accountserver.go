@@ -26,3 +26,8 @@ func (s *AccountServer) AccountList(ctx context.Context, in *pb.AccountListReq) 
 	l := logic.NewAccountListLogic(ctx, s.svcCtx)
 	return l.AccountList(in)
 }
+
+func (s *AccountServer) GetSubAcctNoPassUid(ctx context.Context, in *pb.GetSubAcctNoPassUidReq) (*pb.GetSubAcctNoPassUidResp, error) {
+	l := logic.NewGetSubAcctNoPassUidLogic(ctx, s.svcCtx)
+	return l.GetSubAcctNoPassUid(in)
+}

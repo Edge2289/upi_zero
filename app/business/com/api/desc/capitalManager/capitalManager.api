@@ -27,11 +27,11 @@ service splitBillsSummary {
 
 type (
     SplitBillsSummaryListReq {
-        page string `form:"page"`
-        per_page string `form:"perPage"`
-        buyerCompanyName string `form:"buyer_company_name"`
-        theMonthStart string  `form:"the_month_start"`
-        theMonthEnd string  `form:"the_month_end"`
+        Page string `form:"page"`
+        PerPage string `form:"perPage"`
+        BuyerCompanyName string `form:"buyer_company_name"`
+        TheMonthStart string  `form:"the_month_start"`
+        TheMonthEnd string  `form:"the_month_end"`
     }
 
     SplitBillsSummaryListResp {

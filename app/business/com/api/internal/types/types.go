@@ -2,11 +2,11 @@
 package types
 
 type SplitBillsSummaryListReq struct {
-	Page              string `form:"page"`
-	Per_page          string `form:"perPage"`
-	buyerCompanyName string `form:"buyer_company_name"`
-	TheMonthStart     string `form:"the_month_start"`
-	TheMonthEnd       string `form:"the_month_end"`
+	Page             string `form:"page"`
+	PerPage          string `form:"perPage"`
+	BuyerCompanyName string `form:"buyer_company_name"`
+	TheMonthStart    string `form:"the_month_start"`
+	TheMonthEnd      string `form:"the_month_end"`
 }
 
 type SplitBillsSummaryListResp struct {

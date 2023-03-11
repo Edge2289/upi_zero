@@ -19,8 +19,8 @@ UnionPayRpcConfig:
     Key: unionpay.rpc
 
 RedisConf:
-  Host: 127.0.0.1:6379
-  Pass:
+  Host: upi-redis:36379
+  Pass: G62m50oigInC30sf
   Type: node
 
 # unionPay

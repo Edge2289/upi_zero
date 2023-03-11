@@ -13,12 +13,15 @@ import (
 )
 
 type (
-	AccountData     = pb.AccountData
-	AccountListReq  = pb.AccountListReq
-	AccountListResp = pb.AccountListResp
+	AccountData             = pb.AccountData
+	AccountListReq          = pb.AccountListReq
+	AccountListResp         = pb.AccountListResp
+	GetSubAcctNoPassUidReq  = pb.GetSubAcctNoPassUidReq
+	GetSubAcctNoPassUidResp = pb.GetSubAcctNoPassUidResp
 
 	Account interface {
 		AccountList(ctx context.Context, in *AccountListReq, opts ...grpc.CallOption) (*AccountListResp, error)
+		GetSubAcctNoPassUid(ctx context.Context, in *GetSubAcctNoPassUidReq, opts ...grpc.CallOption) (*GetSubAcctNoPassUidResp, error)
 	}
 
 	defaultAccount struct {
@@ -35,4 +38,9 @@ func NewAccount(cli zrpc.Client) Account {
 func (m *defaultAccount) AccountList(ctx context.Context, in *AccountListReq, opts ...grpc.CallOption) (*AccountListResp, error) {
 	client := pb.NewAccountClient(m.cli.Conn())
 	return client.AccountList(ctx, in, opts...)
+}
+
+func (m *defaultAccount) GetSubAcctNoPassUid(ctx context.Context, in *GetSubAcctNoPassUidReq, opts ...grpc.CallOption) (*GetSubAcctNoPassUidResp, error) {
+	client := pb.NewAccountClient(m.cli.Conn())
+	return client.GetSubAcctNoPassUid(ctx, in, opts...)
 }

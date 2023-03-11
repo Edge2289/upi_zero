@@ -10,6 +10,8 @@ Log:
   ServiceName: splitbillssummary-rpc
   Level: error
 
+DB:
+  DataSource: UPITestUser:KWvLoRrXZKAzUze6TAmAL8kVhx0wGX@tcp(106.55.47.143:3306)/upi?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
 
 # rpc 示例
 #UnionPayRpcConfig:
@@ -19,10 +21,17 @@ Log:
 #    Key: unionpay.rpc
 
 RedisConf:
-  Host: 127.0.0.1:6379
-  Pass:
+  Host: upi-redis:36379
+  Pass: G62m50oigInC30sf
   Type: node
 
 Cache:
   - Host: upi-redis:36379
-    Pass: G62m50oigInC30sf  
+    Pass: G62m50oigInC30sf
+
+# 账户服务
+AccountRpcConfig:
+  Etcd:
+    Hosts:
+      - 0.0.0.0:20000
+    Key: account.rpc

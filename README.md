@@ -2,8 +2,8 @@
 
 BelongTo:Shinnosuke
 
-### 项目简介
-练手项目
+### 项目简
+upiGo 版本
 
 #### 常用的命令
 ```go

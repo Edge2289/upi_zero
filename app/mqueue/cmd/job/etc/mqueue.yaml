@@ -11,3 +11,6 @@ Redis:
   Host: 127.0.0.1:6379
   Pass:
   Type: node
+
+Asynq:
+  Concurrency: 50 # 并发进程数

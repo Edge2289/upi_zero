@@ -9,4 +9,10 @@ type Config struct {
 	service.ServiceConf
 
 	Redis redis.RedisConf
+
+	Asynq Asynq
+}
+
+type Asynq struct {
+	Concurrency int
 }

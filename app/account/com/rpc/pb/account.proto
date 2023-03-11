@@ -6,41 +6,51 @@ option go_package = "./pb";
 package pb;
 
 service account {
-    rpc accountList(AccountListReq)returns(AccountListResp);
+  rpc accountList(AccountListReq) returns (AccountListResp);
+
+  rpc getSubAcctNoPassUid(GetSubAcctNoPassUidReq) returns (GetSubAcctNoPassUidResp);
 }
 
 message AccountListReq {
-    int64   page = 1;
-    int64   perPage = 2;
-    string  subAcctNo = 3;
-    string  memberName = 4;
-    string  startTime = 5;
-    string  endTime = 6;
+  int64   page = 1;
+  int64   perPage = 2;
+  string  subAcctNo = 3;
+  string  memberName = 4;
+  string  startTime = 5;
+  string  endTime = 6;
 }
 
 message AccountListResp {
-    repeated AccountData list = 1;
+  repeated AccountData list = 1;
 }
 
 message AccountData {
-    int64 id = 1;
-    int64 subAcctNo = 2;
-    string tranNetMemberCode = 3;
-    string memberName = 4;
-    string memberGlobalType = 5;
-    string memberGlobalID = 6;
-    string userNickname = 7;
-    string mobile = 8;
-    string memberProperty = 9;
-    string reservedMsg = 10;
-    uint32 status = 11;
-    string passTime = 12;
-    uint32 type = 13;
-    int64  eiconBankBranchID = 14;
-    int64  memberAcctNo = 15;
-    int64  cnapsBranchID = 16;
-    string acctOpenBranchName = 17;
-    uint32 bankType = 18;
-    string createdAt = 19;
-    string updatedAt = 20;
+  int64 id = 1;
+  int64 subAcctNo = 2;
+  string tranNetMemberCode = 3;
+  string memberName = 4;
+  string memberGlobalType = 5;
+  string memberGlobalID = 6;
+  string userNickname = 7;
+  string mobile = 8;
+  string memberProperty = 9;
+  string reservedMsg = 10;
+  uint32 status = 11;
+  string passTime = 12;
+  uint32 type = 13;
+  int64  eiconBankBranchID = 14;
+  int64  memberAcctNo = 15;
+  int64  cnapsBranchID = 16;
+  string acctOpenBranchName = 17;
+  uint32 bankType = 18;
+  string createdAt = 19;
+  string updatedAt = 20;
+}
+
+message GetSubAcctNoPassUidReq {
+  int64 uid = 1;
+}
+
+message GetSubAcctNoPassUidResp {
+  repeated string subAcctNo = 1;
 }
