@@ -8,8 +8,15 @@ import (
 type Config struct {
 	zrpc.RpcServerConf
 
-	DB struct {
-		DataSource string
+	Db struct {
+		Host string
+		User string
+		Password string
+		DbName string
+		DeBug int
+		MaxLifetime int
+		MaxOpenConn int
+		MaxIdleConn int
 	}
 
 	Cache cache.CacheConf

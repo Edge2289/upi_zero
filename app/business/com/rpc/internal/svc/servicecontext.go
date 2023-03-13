@@ -2,8 +2,8 @@ package svc
 
 import (
 	"github.com/zeromicro/go-zero/zrpc"
-	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"upi/common/resources/db"
 
 	"upi/app/account/com/rpc/account"
 	"upi/app/business/com/rpc/internal/config"
@@ -17,14 +17,20 @@ type ServiceContext struct {
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
-	db, err := gorm.Open(mysql.Open(c.DB.DataSource), &gorm.Config{})
-	if err != nil {
-		panic(err)
-	}
+
 	return &ServiceContext{
 		Config: c,
 
 		AccountRpc: account.NewAccount(zrpc.MustNewClient(c.AccountRpcConfig)),
-		DbEngine: db,
+		DbEngine: db.Instance(db.GormConfig{
+			Host:        c.Db.Host,
+			User:        c.Db.User,
+			PassWord:    c.Db.Password,
+			DbName:      c.Db.DbName,
+			DeBug:       c.Db.DeBug,
+			MaxLifetime: c.Db.MaxLifetime,
+			MaxOpenConn: c.Db.MaxOpenConn,
+			MaxIdleConn: c.Db.MaxIdleConn,
+		}),
 	}
 }

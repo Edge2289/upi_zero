@@ -1,26 +1,31 @@
 package svc
 
 import (
-	"github.com/zeromicro/go-zero/core/stores/sqlx"
+	"gorm.io/gorm"
 	"upi/app/account/com/rpc/internal/config"
-	"upi/app/account/model"
+	"upi/common/resources/db"
 )
 
 type ServiceContext struct {
 	Config config.Config
 
-	SpaAccountModel           model.SpaAccountsModel
-	SpaAccountBindingsModel   model.SpaAccountBindingsModel
-	SpaAccountOaEntitiesModel model.SpaAccountOaEntitiesModel
+	DbEngine *gorm.DB
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
-	sqlConn := sqlx.NewMysql(c.DB.DataSource)
 
 	return &ServiceContext{
-		Config:                    c,
-		SpaAccountModel:           model.NewSpaAccountsModel(sqlConn, c.Cache),
-		SpaAccountBindingsModel:   model.NewSpaAccountBindingsModel(sqlConn, c.Cache),
-		SpaAccountOaEntitiesModel: model.NewSpaAccountOaEntitiesModel(sqlConn, c.Cache),
+		Config: c,
+
+		DbEngine: db.Instance(db.GormConfig{
+			Host:        c.Db.Host,
+			User:        c.Db.User,
+			PassWord:    c.Db.Password,
+			DbName:      c.Db.DbName,
+			DeBug:       c.Db.DeBug,
+			MaxLifetime: c.Db.MaxLifetime,
+			MaxOpenConn: c.Db.MaxOpenConn,
+			MaxIdleConn: c.Db.MaxIdleConn,
+		}),
 	}
 }

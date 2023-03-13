@@ -10,14 +10,14 @@ type SplitBillsSummaryListReq struct {
 }
 
 type SplitBillsSummaryListResp struct {
-	List []SplitBillsSummaryListmap `json:"list"`
+	List []SplitBillsSummaryListMap `json:"list"`
 }
 
-type SplitBillsSummaryListmap struct {
+type SplitBillsSummaryListMap struct {
 	SbsID            int    `json:"sbs_id"`
 	TheMonth         string `json:"the_month"`
-	BuyerSubAcctNo   int64  `json:"buyer_sub_acct_no"`
-	SalerSubAcctNo   int64  `json:"saler_sub_acct_no"`
+	BuyerSubAcctNo   string `json:"buyer_sub_acct_no"`
+	SalerSubAcctNo   string `json:"saler_sub_acct_no"`
 	TheType          string `json:"the_type"`
 	SettleIn         string `json:"settle_in"`
 	IntoAmount       string `json:"into_amount"`

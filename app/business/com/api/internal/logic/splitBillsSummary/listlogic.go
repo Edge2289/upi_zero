@@ -30,7 +30,6 @@ func NewListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *ListLogic {
 func (l *ListLogic) List(req *types.SplitBillsSummaryListReq) (resp *types.SplitBillsSummaryListResp, err error) {
 
 	uid := ctxdata.GetUidFromCtx(l.ctx)
-
 	respData, err := l.svcCtx.SplitBillsSummaryRpc.List(l.ctx, &splitbillssummary.SplitBillsSummaryListReq{
 		Page: req.Page,
 		PerPage: req.PerPage,
@@ -45,17 +44,16 @@ func (l *ListLogic) List(req *types.SplitBillsSummaryListReq) (resp *types.Split
 	//
 	// 格式转换
 	//
-	var respMap []types.SplitBillsSummaryListmap
+	var respMap []types.SplitBillsSummaryListMap
 
 	if len(respData.List) > 0 {
 		for _, r := range respData.List {
 			fmt.Printf(r.BuyerSubAcctNo)
-			var b types.SplitBillsSummaryListmap
-			err = copier.Copy(r, b)
+			var b types.SplitBillsSummaryListMap
+			err = copier.Copy(&b, r)
 			if err != nil {
-				fmt.Println("-------------err-------------", err.Error())
+				return nil, err
 			}
-			fmt.Println("b", b)
 
 			respMap = append(respMap, b)
 		}

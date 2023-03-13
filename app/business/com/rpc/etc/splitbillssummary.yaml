@@ -10,15 +10,23 @@ Log:
   ServiceName: splitbillssummary-rpc
   Level: error
 
-DB:
-  DataSource: UPITestUser:KWvLoRrXZKAzUze6TAmAL8kVhx0wGX@tcp(106.55.47.143:3306)/upi?charset=utf8mb4&parseTime=true&loc=Asia%2FShanghai
-
-# rpc 示例
-#UnionPayRpcConfig:
-#  Etcd:
-#    Hosts:
-#      - 0.0.0.0:20000
-#    Key: unionpay.rpc
+Db:
+  # 连接地址
+  Host: 106.55.47.143:3306
+  # 用户名
+  User: UPITestUser
+  # 密码
+  Password: KWvLoRrXZKAzUze6TAmAL8kVhx0wGX
+  # 数据库
+  DbName: upi
+  # 是否开启调试模式 0:关闭 1:开启
+  DeBug: 1
+  # 设置连接可以重用的最长时间(单位：秒)
+  MaxLifetime: 7200
+  # 设置数据库的最大打开连接数
+  MaxOpenConn: 150
+  # 设置空闲连接池中的最大连接数
+  MaxIdleConn: 50
 
 RedisConf:
   Host: upi-redis:36379

@@ -2,7 +2,7 @@ package logic
 
 import (
 	"context"
-	"fmt"
+	"upi/app/account/model"
 
 	"upi/app/account/com/rpc/internal/svc"
 	"upi/app/account/com/rpc/pb"
@@ -27,17 +27,13 @@ func NewGetSubAcctNoPassUidLogic(ctx context.Context, svcCtx *svc.ServiceContext
 // GetSubAcctNoPassUid 通过uid获取子账户列表
 func (l *GetSubAcctNoPassUidLogic) GetSubAcctNoPassUid(in *pb.GetSubAcctNoPassUidReq) (*pb.GetSubAcctNoPassUidResp, error) {
 
-	fmt.Println("==============")
-
-	model := l.svcCtx.SpaAccountBindingsModel.RowBuilder()
-	model = model.Where("user_id", in.Uid)
-	data, err := l.svcCtx.SpaAccountBindingsModel.FindAll(l.ctx, model)
+	var info []model.SpaAccountBindingsInfo
+	err := l.svcCtx.DbEngine.WithContext(l.ctx).Model(&info).Where("user_id = ?", in.Uid).Select("sub_acct_no").Group("sub_acct_no").Find(&info).Error
 	if err != nil {
 		return nil, err
 	}
 	var subAcctNo []string
-
-	for _, c := range data {
+	for _, c := range info {
 		subAcctNo = append(subAcctNo, c.SubAcctNo)
 	}
 
