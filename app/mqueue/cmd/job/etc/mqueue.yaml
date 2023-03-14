@@ -8,9 +8,9 @@ Log:
   Level: error
 
 Redis:
-  Host: 127.0.0.1:6379
-  Pass:
+  Host: upi-redis:6379
   Type: node
+  Pass: G62m50oigInC30sf
 
 Asynq:
   Concurrency: 50 # 并发进程数

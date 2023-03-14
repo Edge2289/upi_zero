@@ -23,7 +23,7 @@ services:
 
   #前端api + 业务rpc
   upi:
-    image: lyumikael/go-modd-env:v1.0.0  # if you macOs m1
+    image: lyumikael/go-modd-env:v1.0.0
     container_name: upi
     environment:
       # 时区上海
@@ -55,7 +55,6 @@ services:
     image: wurstmeister/zookeeper
     container_name: zookeeper
     environment:
-      # 时区上海
       TZ: Asia/Shanghai
     restart: always
     ports:
@@ -82,14 +81,14 @@ services:
     depends_on:
       - zookeeper
 
-  #asynqmon asynq延迟队列、定时队列的webui
+  #asynqmon webui
   asynqmon:
     image: hibiken/asynqmon:latest
     container_name: asynqmon
     ports:
       - 8980:8080
     command:
-      - '--redis-addr=redis:6379'
+      - '--redis-addr=upi-redis:6379'
       - '--redis-password=G62m50oigInC30sf'
     restart: always
     networks:
@@ -120,4 +119,4 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.80.0.0/16
+        - subnet: 172.88.0.0/16

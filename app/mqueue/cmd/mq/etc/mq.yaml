@@ -8,9 +8,9 @@ Log:
   Level: error
 
 Redis:
-  Host: 127.0.0.1:6379
+  Host: upi-redis:36379
   Type: node
-  Pass:
+  Pass: G62m50oigInC30sf
 
 #kq
 PaymentUpdateStateConf:

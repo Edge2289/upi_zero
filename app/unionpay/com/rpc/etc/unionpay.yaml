@@ -22,7 +22,6 @@ Cache:
   - Host: upi-redis:36379
     Pass: G62m50oigInC30sf
 
-
 KqueuePayConf:
   Brokers:
     - kafka:9092
